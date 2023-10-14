@@ -24,13 +24,13 @@ public class AppSettings{
         }
         return settingsInstance;
     }*/
-    //Lazy Loading
+    //end Lazy Loading method
 
     //Eager loading, return the Singleton Instance
     public static AppSettings getInstance(){
         return settingsInstance;
     }
-    //end Eager loading
+    //end Eager loading method
 
     public String getAppBackground() {
         return appBackground;
