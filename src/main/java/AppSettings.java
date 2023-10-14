@@ -4,7 +4,7 @@ import java.util.Properties;
 
 public class AppSettings{
 
-    private static AppSettings settingsInstance = initAppSettings();
+    private static final AppSettings settingsInstance = initAppSettings();
 
     private String appBackground;
     private String appCheckboxStyle;
