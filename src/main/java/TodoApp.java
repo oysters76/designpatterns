@@ -17,8 +17,6 @@ public class TodoApp {
 
     }
 
-
-
     interface Component{
         void render();
     }

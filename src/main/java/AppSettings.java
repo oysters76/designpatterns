@@ -1,6 +1,10 @@
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 public class AppSettings{
 
-    private static AppSettings settingsInstance;
+    private static AppSettings settingsInstance = initAppSettings();
 
     private String appBackground;
     private String appCheckboxStyle;
@@ -12,11 +16,24 @@ public class AppSettings{
         this.appBoxStyle = appBoxStyle;
     }
 
-    public static AppSettings getInstance(){
-        if (settingsInstance == null){
-            settingsInstance = new AppSettings("white", "default-checkbox", "default-boxstyle");
-            return settingsInstance;
+    public static AppSettings initAppSettings(){
+        Properties properties = new Properties();
+        AppSettings appSettings;
+        try {
+            properties.load(AppSettings.class.getResourceAsStream("app.properties"));
+            appSettings = new AppSettings(
+                    properties.getProperty("appBackground"),
+                    properties.getProperty("appCheckboxStyle"),
+                    properties.getProperty("appBoxStyle")
+            );
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+        return appSettings;
+    }
+
+    public static AppSettings getInstance(){
         return settingsInstance;
     }
 
