@@ -24,8 +24,8 @@ public class FactoryPatternTest {
     }
 
     interface Enemy{
-        public void doAttack();
-        public void getStat();
+        void doAttack();
+        void getStat();
     }
 
     class AsteriodEnemy implements Enemy{
