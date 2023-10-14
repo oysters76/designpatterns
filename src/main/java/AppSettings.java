@@ -1,6 +1,10 @@
 public class AppSettings{
 
-    private static AppSettings settingsInstance;
+    //Lazy Loading Singleton Instance
+    //private static AppSettings settingsInstance;
+
+    //Eager loading Singleton Instance
+    private static final AppSettings settingsInstance  = new AppSettings("white", "default-checkbox", "default-boxstyle");
 
     private String appBackground;
     private String appCheckboxStyle;
@@ -12,13 +16,21 @@ public class AppSettings{
         this.appBoxStyle = appBoxStyle;
     }
 
-    public static AppSettings getInstance(){
+    //Lazy Loading ,return the Singleton Instance
+    /*public static AppSettings getInstance(){
         if (settingsInstance == null){
             settingsInstance = new AppSettings("white", "default-checkbox", "default-boxstyle");
             return settingsInstance;
         }
         return settingsInstance;
+    }*/
+    //Lazy Loading
+
+    //Eager loading, return the Singleton Instance
+    public static AppSettings getInstance(){
+        return settingsInstance;
     }
+    //end Eager loading
 
     public String getAppBackground() {
         return appBackground;
